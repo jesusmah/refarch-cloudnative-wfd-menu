@@ -7,8 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.client.RestTemplate;
 
-import java.util.List;
-import java.util.ArrayList;
+import com.ibm.microservices.wfd.model.MealEntree;
 
 @Component
 @RestController
@@ -22,9 +21,9 @@ public class MealOptionsService {
   public Menu getMealOptions() {
 
     Menu newMenu = new Menu();
-    
-    MealOptions entrees =
-        this.restTemplate.getForObject("http://entree-service/menu", MealOptions.class);
+
+    MealEntree entrees =
+        this.restTemplate.getForObject("http://entree-service/menu", MealEntree.class);
     newMenu.setEntrees(entrees);
 
     return newMenu;
@@ -32,36 +31,19 @@ public class MealOptionsService {
 
 }
 
-class MealOptions {
-
-    private List<String> options;
-
-    MealOptions(){
-      this.options = new ArrayList<String>();
-    }
-
-    public List<String> getOptions(){
-      return this.options;
-    }
-
-    public void setOptions(List<String> options){
-      this.options = options;
-    }
-}
-
 class Menu {
 
-  private MealOptions entrees;
+  private MealEntree entrees;
 
   Menu(){
-    this.entrees = new MealOptions();
+    this.entrees = new MealEntree();
   }
 
-  public MealOptions getEntrees(){
+  public MealEntree getEntrees(){
     return this.entrees;
   }
 
-  public void setEntrees(MealOptions entrees){
+  public void setEntrees(MealEntree entrees){
     this.entrees = entrees;
   }
 
