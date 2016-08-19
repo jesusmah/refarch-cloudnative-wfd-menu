@@ -1,0 +1,17 @@
+spring:
+  application:
+    name: meal-options-service
+  cloud:
+    client:
+      hostname: localhost
+
+server:
+  port: 8180
+
+eureka:
+  instance:
+    hostname: localhost
+    preferIpAddress: true
+  client:
+    serviceUrl:
+       defaultZone: http://localhost:8761/eureka/
