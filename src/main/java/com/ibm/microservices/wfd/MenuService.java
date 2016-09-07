@@ -13,13 +13,13 @@ import com.ibm.microservices.wfd.model.MealAppetizer;
 @Component
 @RestController
 @ResponseBody
-public class MealOptionsService {
+public class MenuService {
 
   @Autowired
   private RestTemplate restTemplate;
 
-  @RequestMapping("/meal-options")
-  public Menu getMealOptions() {
+  @RequestMapping("/menu")
+  public Menu getMenu() {
 
     Menu newMenu = new Menu();
 

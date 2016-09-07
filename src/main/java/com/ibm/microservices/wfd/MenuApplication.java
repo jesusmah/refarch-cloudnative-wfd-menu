@@ -9,11 +9,11 @@ import org.springframework.web.client.RestTemplate;
 
 @SpringBootApplication
 @EnableDiscoveryClient
-public class MealOptionsApplication {
+public class MenuApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(MealOptionsApplication.class, args);
-		System.out.println("Running "+MealOptionsApplication.class+" via Spring Boot!");
+		SpringApplication.run(MenuApplication.class, args);
+		System.out.println("Running "+MenuApplication.class+" via Spring Boot!");
 	}
 
 	@Bean
