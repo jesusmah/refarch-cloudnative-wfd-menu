@@ -35,15 +35,15 @@ public class MenuService {
     Menu newMenu = new Menu();
 
     MealAppetizer apps =
-        this.restTemplate.getForObject("http://appetizer-service/menu", MealAppetizer.class);
+        this.restTemplate.getForObject("http://appetizer-service/appetizers", MealAppetizer.class);
     newMenu.setAppetizers(apps);
 
     MealEntree entrees =
-        this.restTemplate.getForObject("http://entree-service/menu", MealEntree.class);
+        this.restTemplate.getForObject("http://entree-service/entrees", MealEntree.class);
     newMenu.setEntrees(entrees);
 
     MealDessert desserts =
-      this.restTemplate.getForObject("http://dessert-service/menu", MealDessert.class);
+      this.restTemplate.getForObject("http://dessert-service/desserts", MealDessert.class);
     newMenu.setDesserts(desserts);
 
     return newMenu;
