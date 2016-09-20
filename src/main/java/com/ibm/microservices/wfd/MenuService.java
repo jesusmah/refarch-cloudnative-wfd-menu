@@ -6,8 +6,10 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
 import org.springframework.web.client.RestTemplate;
-
 import com.ibm.microservices.wfd.model.MealEntree;
 import com.ibm.microservices.wfd.model.MealAppetizer;
 import com.ibm.microservices.wfd.model.MealDessert;
@@ -20,7 +22,14 @@ public class MenuService {
   @Autowired
   private RestTemplate restTemplate;
 
-  @RequestMapping(path = "/menu" , method = RequestMethod.GET)
+  @ApiOperation(value = "Get the menu", notes = "Returns a list of the appetizers, starters and desserts that are on the menu")
+  @RequestMapping(method = RequestMethod.GET, path="/menu", produces = "application/json")
+  @ApiResponses(value = {
+    @ApiResponse(code = 200, message = "Success", response = MenuService.class),
+    @ApiResponse(code = 401, message = "Unauthorized"),
+    @ApiResponse(code = 403, message = "Forbidden"),
+    @ApiResponse(code = 404, message = "Not Found"),
+    @ApiResponse(code = 500, message = "Failure")})
   public Menu getMenu() {
 
     Menu newMenu = new Menu();
@@ -77,5 +86,4 @@ class Menu {
   public void setDesserts(MealDessert desserts){
     this.desserts = desserts;
   }
-
 }
