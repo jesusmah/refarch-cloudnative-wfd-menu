@@ -1,6 +1,6 @@
 spring:
   application:
-    name: meal-options-service
+    name: menu-service
 #  cloud:
 #    client:
 #      hostname: localhost
