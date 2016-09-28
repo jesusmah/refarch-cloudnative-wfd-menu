@@ -1,0 +1,3 @@
+applications:
+- name: microservices-refapp-wfd-menu
+  memory: 256M

@@ -9,9 +9,19 @@ server:
   port: 8180
 
 eureka:
-  instance:
-#    hostname: localhost
-    preferIpAddress: true
   client:
     serviceUrl:
-       defaultZone: http://localhost:8761/eureka/
+       defaultZone: ${vcap.services.eureka-service-discovery.credentials.uri:http://localhost:8761/eureka/}
+  instance:
+    hostname: ${vcap.application.uris[0]:localhost}
+    metadataMap:
+      instanceId: ${vcap.application.instance_id:${spring.application.name}:${spring.application.instance_id:${server.port}}}
+    preferIpAddress: true
+
+---
+spring:
+  profiles: cloud
+eureka:
+  instance:
+    nonSecurePort: 80
+    preferIpAddress: false
