@@ -1,9 +1,6 @@
 spring:
   application:
     name: menu-service
-#  cloud:
-#    client:
-#      hostname: localhost
 
 server:
   port: 8180
@@ -26,7 +23,7 @@ wfd:
       url: http://entree-service/entrees
     desserts:
       url: http://dessert-service/desserts
-      
+
 ---
 spring:
   profiles: cloud
