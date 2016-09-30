@@ -6,6 +6,8 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
@@ -17,8 +19,12 @@ import com.ibm.microservices.wfd.model.MealDessert;
 @Component
 @RestController
 @ResponseBody
+@EnableConfigurationProperties
 public class MenuService {
 
+  @Autowired
+  private MenuConfiguration config;
+  
   @Autowired
   private RestTemplate restTemplate;
 
@@ -35,15 +41,15 @@ public class MenuService {
     Menu newMenu = new Menu();
 
     MealAppetizer apps =
-        this.restTemplate.getForObject("http://appetizer-service/appetizers", MealAppetizer.class);
+        this.restTemplate.getForObject(this.config.getAppetizers(), MealAppetizer.class);
     newMenu.setAppetizers(apps);
 
     MealEntree entrees =
-        this.restTemplate.getForObject("http://entree-service/entrees", MealEntree.class);
+        this.restTemplate.getForObject(this.config.getEntrees(), MealEntree.class);
     newMenu.setEntrees(entrees);
 
     MealDessert desserts =
-      this.restTemplate.getForObject("http://dessert-service/desserts", MealDessert.class);
+        this.restTemplate.getForObject(this.config.getDesserts(), MealDessert.class);
     newMenu.setDesserts(desserts);
 
     return newMenu;
