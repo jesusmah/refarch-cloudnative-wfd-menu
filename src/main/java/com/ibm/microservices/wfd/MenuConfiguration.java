@@ -5,9 +5,6 @@ package com.ibm.microservices.wfd;
  *  due to issues with YAML-formatted lists
  **/
 
-//import java.util.List;
-//import java.util.ArrayList;
-
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.boot.context.properties.ConfigurationProperties;
