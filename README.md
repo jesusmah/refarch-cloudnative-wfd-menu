@@ -3,7 +3,7 @@
 ### Microservices Reference Application - What's For Dinner Menu Service
 
 *This project is part of the 'IBM Cloud Architecture - Microservices Reference Application for Netflix OSS' suite, available at
-https://github.com/ibm-cloud-architecture/microservices-netflix*
+https://github.com/ibm-cloud-architecture/refarch-cloudnative-netflix*
 
 #### Introduction
 
@@ -24,7 +24,7 @@ You can use cURL or Chrome POSTMAN to send get/post/put/delete requests to the a
 #### Build the application
 1. Clone git repository.
     ```
-    git clone https://github.com/ibm-cloud-architecture/microservices-refapp-wfd-menu
+    git clone https://github.com/ibm-cloud-architecture/refarch-cloudnative-wfd-menu
     cd microservices-refapp-wfd-menu
     ```
 
@@ -43,12 +43,12 @@ You can use cURL or Chrome POSTMAN to send get/post/put/delete requests to the a
 #### Run Menu Service on localhost
 In this section you will deploy the Spring Boot application to run on your localhost.
 
-1.  [Setup Eureka](https://github.com/ibm-cloud-architecture/microservices-netflix-eureka#run-the-application-component-locally) to run locally.
+1.  [Setup Eureka](https://github.com/ibm-cloud-architecture/refarch-cloudnative-netflix-eureka#run-the-application-component-locally) to run locally.
 
 2.  Run the required downstream services:  
-  2.1.  [Appetizer](https://github.com/ibm-cloud-architecture/microservices-refapp-wfd-appetizer#run-appetizer-service-on-localhost)
-  2.2.  [Entree](https://github.com/ibm-cloud-architecture/microservices-refapp-wfd-entree#run-entree-service-on-localhost)
-  2.3.  [Desserts](https://github.com/ibm-cloud-architecture/microservices-refapp-wfd-dessert#run-dessert-service-on-localhost)
+  2.1.  [Appetizer](https://github.com/ibm-cloud-architecture/refarch-cloudnative-wfd-appetizer#run-appetizer-service-on-localhost)
+  2.2.  [Entree](https://github.com/ibm-cloud-architecture/refarch-cloudnative-wfd-entree#run-entree-service-on-localhost)
+  2.3.  [Desserts](https://github.com/ibm-cloud-architecture/refarch-cloudnative-wfd-dessert#run-dessert-service-on-localhost)
 
 3. Run the application on localhost (assuming default Gradle build).  If Eureka is not running locally, you will need to pass the location of the Eureka server as a command-line paramter.
     ```
@@ -69,12 +69,12 @@ In this section you will deploy the Spring Boot application to run in a local do
     ./build-microservice.sh -d
     ```
 
-2. If not done so already, [Setup Eureka](https://github.com/ibm-cloud-architecture/microservices-netflix-eureka#run-the-application-component-locally) to run locally.
+2. If not done so already, [Setup Eureka](https://github.com/ibm-cloud-architecture/refarch-cloudnative-netflix-eureka#run-the-application-component-locally) to run locally.
 
 3.  Run the required downstream services:  
-  3.1.  [Appetizer](https://github.com/ibm-cloud-architecture/microservices-refapp-wfd-appetizer#run-appetizer-service-on-local-docker-container)
-  3.2.  [Entree](https://github.com/ibm-cloud-architecture/microservices-refapp-wfd-entree#run-entree-service-on-local-docker-container)
-  3.3.  [Desserts](https://github.com/ibm-cloud-architecture/microservices-refapp-wfd-dessert#run-dessert-service-on-local-docker-container)
+  3.1.  [Appetizer](https://github.com/ibm-cloud-architecture/refarch-cloudnative-wfd-appetizer#run-appetizer-service-on-local-docker-container)
+  3.2.  [Entree](https://github.com/ibm-cloud-architecture/refarch-cloudnative-wfd-entree#run-entree-service-on-local-docker-container)
+  3.3.  [Desserts](https://github.com/ibm-cloud-architecture/refarch-cloudnative-wfd-dessert#run-dessert-service-on-local-docker-container)
 
 4. Start the application in docker container.
     ```
@@ -99,12 +99,12 @@ In this section you will deploy the Spring Boot application to run in a local do
     cf target -o <your-bluemix-org> -s <your-bluemix-space>
     ```
 
-3. [Setup Eureka on Bluemix](https://github.com/ibm-cloud-architecture/microservices-netflix-eureka#run-the-application-component-on-bluemix).
+3. [Setup Eureka on Bluemix](https://github.com/ibm-cloud-architecture/refarch-cloudnative-netflix-eureka#run-the-application-component-on-bluemix).
 
 4.  Run the required downstream services:  
-  4.1.  [Appetizer](https://github.com/ibm-cloud-architecture/microservices-refapp-wfd-appetizer#deploy-appetizer-service-to-cloud-foundry-runtime-on-ibm-bluemix)
-  4.2.  [Entree](https://github.com/ibm-cloud-architecture/microservices-refapp-wfd-entree#deploy-entree-service-to-cloud-foundry-runtime-on-ibm-bluemix)
-  4.3.  [Desserts](https://github.com/ibm-cloud-architecture/microservices-refapp-wfd-dessert#deploy-dessert-service-to-cloud-foundry-runtime-on-ibm-bluemix)
+  4.1.  [Appetizer](https://github.com/ibm-cloud-architecture/refarch-cloudnative-wfd-appetizer#deploy-appetizer-service-to-cloud-foundry-runtime-on-ibm-bluemix)
+  4.2.  [Entree](https://github.com/ibm-cloud-architecture/refarch-cloudnative-wfd-entree#deploy-entree-service-to-cloud-foundry-runtime-on-ibm-bluemix)
+  4.3.  [Desserts](https://github.com/ibm-cloud-architecture/refarch-cloudnative-wfd-dessert#deploy-dessert-service-to-cloud-foundry-runtime-on-ibm-bluemix)
 
 5.  Create a user-provided service for Eureka, so the services running in Cloud Foundry can bind to it:
 
@@ -160,12 +160,12 @@ In this section you will deploy the Spring Boot application to run in a local do
     docker push registry.ng.bluemix.net/$(cf ic namespace get)/wfd-microservice:latest
     ```
 
-5. [Setup Eureka on Bluemix](https://github.com/ibm-cloud-architecture/microservices-netflix-eureka#run-the-application-component-on-bluemix).
+5. [Setup Eureka on Bluemix](https://github.com/ibm-cloud-architecture/refarch-cloudnative-netflix-eureka#run-the-application-component-on-bluemix).
 
 6.  Run the required downstream services:  
-  6.1.  [Appetizer](https://github.com/ibm-cloud-architecture/microservices-refapp-wfd-appetizer#deploy-appetizer-service-to-docker-container-on-ibm-bluemix)
-  6.2.  [Entree](https://github.com/ibm-cloud-architecture/microservices-refapp-wfd-entree#deploy-entree-service-to-docker-container-on-ibm-bluemix)
-  6.3.  [Desserts](https://github.com/ibm-cloud-architecture/microservices-refapp-wfd-dessert#deploy-desserts-service-to-docker-container-on-ibm-bluemix)
+  6.1.  [Appetizer](https://github.com/ibm-cloud-architecture/refarch-cloudnative-wfd-appetizer#deploy-appetizer-service-to-docker-container-on-ibm-bluemix)
+  6.2.  [Entree](https://github.com/ibm-cloud-architecture/refarch-cloudnative-wfd-entree#deploy-entree-service-to-docker-container-on-ibm-bluemix)
+  6.3.  [Desserts](https://github.com/ibm-cloud-architecture/refarch-cloudnative-wfd-dessert#deploy-desserts-service-to-docker-container-on-ibm-bluemix)
 
 7. Start the application in an IBM Bluemix Container. Replace `{eureka-host}` with the public route configured in the deployment of Eureka to Bluemix.  
 
