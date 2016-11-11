@@ -14,6 +14,9 @@ import com.ibm.microservices.wfd.model.MealDessert;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
 
+import java.util.List;
+import java.util.ArrayList;
+
 @Component
 @EnableConfigurationProperties
 public class MenuAggregate {
@@ -30,7 +33,14 @@ public class MenuAggregate {
   }
 
   public MealAppetizer getDefaultAppetizers(){
-    return new MealAppetizer();
+
+    List<String> appetizerList = new ArrayList<String>();
+                 appetizerList.add("Chips");
+                 appetizerList.add("Salsa");
+                 appetizerList.add("Bruschetta");
+
+    return new MealAppetizer(1, appetizerList, "default-appetizers");
+
   }
 
   @HystrixCommand(fallbackMethod="getDefaultEntrees", groupKey="MenuServiceAggregator", commandKey="GetEntrees")
@@ -39,7 +49,14 @@ public class MenuAggregate {
   }
 
   public MealEntree getDefaultEntrees(){
-    return new MealEntree();
+
+    List<String> entreeList = new ArrayList<String>();
+                 entreeList.add("Hamburger");
+                 entreeList.add("Hot Dog");
+                 entreeList.add("Spaghetti");
+
+    return new MealEntree(2, entreeList, "default-entrees");
+
   }
 
   @HystrixCommand(fallbackMethod="getDefaultDesserts", groupKey="MenuServiceAggregator", commandKey="GetDesserts")
@@ -48,7 +65,14 @@ public class MenuAggregate {
   }
 
   public MealDessert getDefaultDesserts(){
-    return new MealDessert();
+
+    List<String> dessertList = new ArrayList<String>();
+                 dessertList.add("Cookies");
+                 dessertList.add("Candy");
+                 dessertList.add("Cake");
+
+    return new MealDessert(3, dessertList, "default-desserts");
+
   }
 
 }
